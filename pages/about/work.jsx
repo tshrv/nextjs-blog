@@ -2,11 +2,12 @@ import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 import Layout from '../../components/layout'
 
-export default function About() {
+export default function About(props) {
     return (
       <Layout>
         <div className={styles.container}>
             <h1 className={styles.title}>Work Experience</h1>
+            <h2>SSG {props.last_build_time}</h2>
             <ul>
               <li><Link href='/'>Home</Link></li>
               <li><Link href='/about'>About me</Link></li>
@@ -31,4 +32,17 @@ export default function About() {
         </div>
       </Layout>
     )
+}
+
+function getCurrentTime() {
+  let now = new Date()
+  return now.toTimeString()
+}
+
+export async function getStaticProps() {
+  let last_build_time = getCurrentTime()
+  console.log('static site generation', last_build_time)
+  return {
+    'props': {last_build_time}
+  }
 }

@@ -3,12 +3,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
 import Layout from '../../components/layout'
-import Navigation from '../../components/navigation'
 
 export default function About(props) {
     return (
-      <Layout>
-        <Navigation/>
+      <Layout>  
         <div className={styles.container}>
           <Head>
             <title>About TS</title>
@@ -16,6 +14,11 @@ export default function About(props) {
           <h1 className={styles.title}>About Me</h1>
           <h2>CSR {getTimestamp()}</h2>
           <h2>SSR {props.server_side_timestamp}</h2>
+          <ul>
+            <li><Link href='/'>Home</Link></li>
+            <li><Link href='/about'>About me</Link></li>
+            <li><Link href='/about/work'>Work Experience</Link></li>
+          </ul>
           <Image
             src="/images/profile.jpeg" // Route of the image file
             height={144} // Desired size with correct aspect ratio
